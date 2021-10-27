@@ -18,7 +18,7 @@ public class UserController {
         this.userServiceImplementation = userServiceImplementation;
     }
 
-    @GetMapping("/list")
+    @GetMapping
     public List<User> getUsers() {
         return (List<User>) userServiceImplementation.list();
     }
@@ -26,6 +26,11 @@ public class UserController {
     @GetMapping("/get/{id}")
     public User getUser(@PathVariable("id") Long id) {
         return userServiceImplementation.get(id);
+    }
+
+    @GetMapping("/get/phone/{phoneNumber}")
+    public User getUserByPhoneNumber(@PathVariable("phoneNumber") String phoneNumber) {
+        return userServiceImplementation.getUserByPhoneNumber(phoneNumber);
     }
 
     @Transactional
@@ -37,6 +42,11 @@ public class UserController {
     @PostMapping("/save")
     public void addUser(@RequestBody User user) {
         userServiceImplementation.create(user);
+    }
+
+    @PostMapping("/update")
+    public void updateUser(@RequestBody User user) {
+        userServiceImplementation.update(user);
     }
 
 }

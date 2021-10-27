@@ -10,6 +10,7 @@ public interface UserService {
 
     User create(User user);
     User get(Long id);
+    User getUserByPhoneNumber(String phoneNumber);
     Collection<User> list();
     User update(User user);
     Boolean delete(Long id);

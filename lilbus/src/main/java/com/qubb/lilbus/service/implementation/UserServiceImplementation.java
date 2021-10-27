@@ -18,7 +18,6 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User create(User user) {
-        System.out.println("New user: " + user.getPhoneNumber());
         return userRepository.save(user);
     }
 
@@ -35,6 +34,11 @@ public class UserServiceImplementation implements UserService {
     @Override
     public User update(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public User getUserByPhoneNumber(String phoneNumber) {
+        return userRepository.findUserByPhoneNumber(phoneNumber);
     }
 
     @Override
